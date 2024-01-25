@@ -61,8 +61,8 @@ class ConfigurableAgent(RunnableBinding):
                 _tools.append(TOOLS[_tool]())
         if agent == GizmoAgentType.GPT_35_TURBO:
             _agent = get_openai_function_agent(_tools, system_message)
-        # elif agent == GizmoAgentType.GPT_4:
-        #     _agent = get_openai_function_agent(_tools, system_message, gpt_4=True)
+        elif agent == GizmoAgentType.GPT_4_TURBO:
+            _agent = get_openai_function_agent(_tools, system_message, gpt_4=True)
         # elif agent == GizmoAgentType.AZURE_OPENAI:
         #     _agent = get_openai_function_agent(_tools, system_message, azure=True)
         # elif agent == GizmoAgentType.CLAUDE2:
@@ -116,7 +116,7 @@ dnd_bot = create_dnd_bot(dnd_llm, checkpoint=RedisCheckpoint()).with_types(
 
 agent = (
     ConfigurableAgent(
-        agent=GizmoAgentType.GPT_35_TURBO,
+        agent=GizmoAgentType.GPT_4_TURBO,
         tools=[],
         system_message=DEFAULT_SYSTEM_MESSAGE,
         retrieval_description=RETRIEVAL_DESCRIPTION,
