@@ -36,8 +36,7 @@ export default function TypingBox(props: {
             aria-hidden="true"
           />
         </div>
-        <input
-          type="text"
+        <textarea
           name="messsage"
           id="message"
           autoFocus

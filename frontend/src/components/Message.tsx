@@ -118,12 +118,19 @@ export function Message(props: MessageType & { runId?: string }) {
           )}
           {(props.type === "function" ? open : true) ? (
             typeof props.content === "string" ? (
-              <div
-                className="text-gray-900 prose"
-                dangerouslySetInnerHTML={{
-                  __html: DOMPurify.sanitize(marked(props.content)).trim(),
-                }}
-              />
+              // <div
+              //   className="text-gray-900 prose"
+              //   dangerouslySetInnerHTML={{
+              //     __html: DOMPurify.sanitize(marked(props.content)).trim(),
+              //   }}
+              // />
+              // Not doing Markedown stuff, prioritize showing code, including HTML
+
+              <div className="text-gray-900 prose">
+                <pre>
+                  {str(props.content)}
+                </pre>
+              </div>
             ) : (
               <div className="text-gray-900 prose">{str(props.content)}</div>
             )
